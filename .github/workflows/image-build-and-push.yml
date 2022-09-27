@@ -46,9 +46,9 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:${GITHUB_RUN_NUMBER}
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:${{github.run_number}}
           secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+            GIT_AUTH_TOKEN=${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
