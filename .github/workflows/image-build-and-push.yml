@@ -10,6 +10,19 @@ jobs:
   main:
     runs-on: ubuntu-22.04
     steps:
+      - 
+        name: echo-default-env-variables
+        run: |
+                  echo "Home: ${HOME}"
+                  echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+                  echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
+                  echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+                  echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+                  echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+                  echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+                  echo "GITHUB_SHA: ${GITHUB_SHA}"
+                  echo "GITHUB_REF: ${GITHUB_REF}"
+                  echo "GITHUB_RUN_NUMBER: ${GITHUB_RUN_NUMBER}"
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -33,7 +46,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:${{GITHUB_RUN_NUMBER}}
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:${GITHUB_RUN_NUMBER}
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
       -
