@@ -33,7 +33,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:{{GITHUB_RUN_NUMBER}}
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-custom-nginx:${{GITHUB_RUN_NUMBER}}
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
       -
