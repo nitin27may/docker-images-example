@@ -1,6 +1,8 @@
 # Nginx Custom Image
 Very Simple Example to build Custom Docker Image.
 
+Steps: [Details](https://nitinksingh.com/pushing-custom-images-to-docker-hub-using-github-actions/)
+
 To build custom image, run below command, here . (dot) is to use current folder as context.
 ```
 docker build -t my-custom-nginx .
